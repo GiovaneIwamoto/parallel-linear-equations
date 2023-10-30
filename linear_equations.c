@@ -11,11 +11,11 @@ Perform back substitution to solve vector x which represents the solutions to th
 */
 
 // Parallel version
-int solve_linear_system_parallel(double *A, double *x, double *b, int n)
+int solve_linear_system_parallel(double *A, double *x, double *b, int n, int threads)
 {
-    int num_threads;
-    printf("NUMBER OF THREADS: ");
-    scanf("%d", &num_threads);
+    int num_threads = threads;
+    printf("NUMBER OF THREADS %d: ", threads);
+    // scanf("%d", &threads);
     printf("CALCULATING...\n");
 
     double temporary;
@@ -140,10 +140,28 @@ int main(int argc, char *argv[])
     }
 
     // Timer for resolving parallel solutions
-    printf("\nPARALLEL SOLUTION\n");
-    double time_parallel = omp_get_wtime();
-    solve_linear_system_parallel(matrix_parallel, x_parallel, b_parallel, dimension_matrix);
-    time_parallel = omp_get_wtime() - time_parallel;
+    printf("\nPARALLEL SOLUTION 2 THREADS\n");
+    double time_parallel_2threads = omp_get_wtime();
+    solve_linear_system_parallel(matrix_parallel, x_parallel, b_parallel, dimension_matrix, 2);
+    time_parallel_2threads = omp_get_wtime() - time_parallel_2threads;
+
+    // Timer for resolving parallel solutions
+    printf("\nPARALLEL SOLUTION 4 THREADS\n");
+    double time_parallel_4threads = omp_get_wtime();
+    solve_linear_system_parallel(matrix_parallel, x_parallel, b_parallel, dimension_matrix, 4);
+    time_parallel_4threads = omp_get_wtime() - time_parallel_4threads;
+
+    // Timer for resolving parallel solutions
+    printf("\nPARALLEL SOLUTION 6 THREADS\n");
+    double time_parallel_6threads = omp_get_wtime();
+    solve_linear_system_parallel(matrix_parallel, x_parallel, b_parallel, dimension_matrix, 6);
+    time_parallel_6threads = omp_get_wtime() - time_parallel_6threads;
+
+    // Timer for resolving parallel solutions
+    printf("\nPARALLEL SOLUTION 8 THREADS\n");
+    double time_parallel_8threads = omp_get_wtime();
+    solve_linear_system_parallel(matrix_parallel, x_parallel, b_parallel, dimension_matrix, 8);
+    time_parallel_8threads = omp_get_wtime() - time_parallel_8threads;
 
     // Timer for resolving sequential solutions
     printf("\nSEQUENTIAL SOLUTION:\n");
@@ -153,7 +171,10 @@ int main(int argc, char *argv[])
     time_sequential = omp_get_wtime() - time_sequential;
 
     // Printing
-    printf("\nEXECUTION TIME - PARALLEL:   %0.10f\n", time_parallel);
+    printf("\nEXECUTION TIME - PARALLEL 2 THREADS:   %0.10f\n", time_parallel_2threads);
+    printf("\nEXECUTION TIME - PARALLEL 4 THREADS:   %0.10f\n", time_parallel_4threads);
+    printf("\nEXECUTION TIME - PARALLEL 6 THREADS:   %0.10f\n", time_parallel_6threads);
+    printf("\nEXECUTION TIME - PARALLEL 8 THREADS:   %0.10f\n", time_parallel_8threads);
     printf("EXECUTION TIME - SEQUENTIAL: %0.10f\n", time_sequential);
     printf("\n------------------------------------\n");
 
