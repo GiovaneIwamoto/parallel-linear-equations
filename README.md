@@ -14,10 +14,10 @@ The linear equation system represented by Ax = b is solved in the code using the
 
 In this phase, matrix A is transformed into an upper triangular matrix. This is done by eliminating the coefficients below the main diagonal. Matrix A and vector b are modified during this process.
 
-**A**. Iteration over the rows of matrix A:
+`A` Iteration over the rows of matrix A:
 The program starts from the first row and goes through to the penultimate row, n - 1, where n is the dimension of the matrix.
 
-**B**. For each current row, the program does the following:
+`B` For each current row, the program does the following:
 Calculates a temporary scaling factor to make the element below the main diagonal equal to zero. This factor is obtained by dividing the current element in the row below the main diagonal by the diagonal element of the current row.
 Subtracts the current row, multiplied by the temporary factor, from the subsequent rows to make the elements below the main diagonal equal to zero.
 Applies the same operation to vector b to maintain consistency.
@@ -26,11 +26,11 @@ Applies the same operation to vector b to maintain consistency.
 
 After matrix A has been transformed into an upper triangular matrix, the program performs back substitution to find the solutions to the system of equations.
 
-**A**. Starting from the last row, n - 1, the program calculates the value of x corresponding to that row.
+`A` Starting from the last row, n - 1, the program calculates the value of x corresponding to that row.
 
-**B**. Then, the program works from the bottom up, finding the values of x for the previous rows. This is done using the x values already calculated for the later rows.
+`B` The program works from the bottom up, finding the values of x for the previous rows. This is done using the x values already calculated for the later rows.
 
-**C**. The value of x for the current row is calculated by dividing the current value in the vector b by the main diagonal entry of the corresponding row in matrix A. In other words, the value of x is equal to the value in b divided by the diagonal value in A.
+`C` The value of x for the current row is calculated by dividing the current value in the vector b by the main diagonal entry of the corresponding row in matrix A. In other words, the value of x is equal to the value in b divided by the diagonal value in A.
 
 The result is a vector x that contains the solutions to the system of equations.
 
