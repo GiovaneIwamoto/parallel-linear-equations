@@ -11,9 +11,9 @@ Parallel computing using OpenMP to solve linear equation systems of the form $Ax
 ### **SOLUTIONS ANALYSIS**
 
 > [!NOTE]
-> Tests were conducted for random values in square matrices as shown in the table.
+> Tests were conducted for random values in square matrices as shown in the table. The values presented are expressed in time units measured in seconds.
 
-The values presented are expressed in time units, measured in seconds. It is observed that the benefits of parallelization become more evident as the size of the matrix increases, becoming increasingly significant. It is also noted that while parallelization introduces some overhead due to task coordination between threads, this cost is largely offset by the substantial speed gain provided by task division and simultaneous execution of operations, particularly with larger dimensions of matrix $A$. The results highlight the effectiveness of the parallel approach for optimization in a problem that involves intensive calculations.
+It is observed that the benefits of parallelization become more evident as the size of the matrix increases, becoming increasingly significant. It is also noted that while parallelization introduces some overhead due to task coordination between threads, this cost is largely offset by the substantial speed gain provided by task division and simultaneous execution of operations, particularly with larger dimensions of matrix $A$. The results highlight the effectiveness of the parallel approach for optimization in a problem that involves intensive calculations.
 
 > [!CAUTION]
 > The tests were conducted on the Windows Subsystem for Linux on a Windows machine. Better results can be obtained in native system environments due to optimization and more direct support for program execution.
